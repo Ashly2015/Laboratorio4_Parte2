@@ -170,6 +170,14 @@ public class RegistroConcepto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txt_efecto.setBackground(new java.awt.Color(255, 204, 204));
+        txt_efecto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_efecto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txt_estatus.setBackground(new java.awt.Color(255, 204, 204));
+        txt_estatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_estatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,7 +218,7 @@ public class RegistroConcepto extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txt_buscar))
                         .addComponent(jButton4)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +267,7 @@ public class RegistroConcepto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Polo.2015");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Planilla_Bd", "root", "Polo.2015");
             PreparedStatement pst = cn.prepareStatement("insert into concepto_649 values(?,?,?,?)");
             String mensaje="";
              String mensaje2="";
@@ -299,7 +307,7 @@ public class RegistroConcepto extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Polo.2015");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Planilla_Bd", "root", "Polo.2015");
             PreparedStatement pst = cn.prepareStatement("select * from concepto_649 where codigo_concepto = ?");
             pst.setString(1, txt_buscar.getText().trim());
             
@@ -329,7 +337,7 @@ public class RegistroConcepto extends javax.swing.JFrame {
         try {
             String codigo_concepto = txt_buscar.getText().trim();
             
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Polo.2015");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Planilla_Bd", "root", "Polo.2015");
             PreparedStatement pst = cn.prepareStatement("update concepto_649 set codigo_concepto = ?, nombre_concepto = ?,efecto_concepto = ?,estatus_concepto = ? where codigo_concepto = " + codigo_concepto);
             String mensaje="";
              String mensaje2="";
@@ -363,7 +371,7 @@ public class RegistroConcepto extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Codigo que permite borrar registros en la base de datos
         try {
-             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Polo.2015");
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Planilla_Bd", "root", "Polo.2015");
             PreparedStatement pst = cn.prepareStatement("delete from concepto_649 where codigo_concepto = ?");
             
             pst.setString(1, txt_buscar.getText().trim());
